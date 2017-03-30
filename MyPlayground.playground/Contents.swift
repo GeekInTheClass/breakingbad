@@ -11,15 +11,21 @@ func makeOddNumArray () {
     }
 }
 
+// Solution
+var arr:[Int] = []
+for i in 1...10{arr.append(i)}
+
+/*************************************************/
+print("문제1")
+arr.map{ print($0 * 2 - 1) }
+/*************************************************/
+
 // 문제 2. *의 개수가 하나씩 증가하는 string 10개를 배열에 넣으세요. (*, **, ..., **********)
-
-var a: [Int] = [1,2,3,4,5]
-
 
 func star() -> String{
     var string: String = ""
     for a in 1...5 {
-        for b in 1...a {
+        for _ in 1...a {
             string += "*"
         }
         string += "\n"
@@ -27,17 +33,31 @@ func star() -> String{
     return string
 }
 
-var bb: String = star()
+//var bb: String = star()
 
-bb
+/*************************************************/
+var bb = arr.reduce("", {(i: String, j: Int) -> String in i + String(Array<Character>(repeating:Character("*"), count:j)) + "\n"})
+print("\n문제2")
+print(bb)
+/*************************************************/
 
 // 문제 3. 13부터 숫자 7개를 더하세요.
+
 
 var sum:Int = 0
 for a in 13...20 {
     sum += a
 }
 
+var c:[Int] = []
+for a in 13...20 {
+    c.append(a)
+}
+
+/*************************************************/
+print("\n문제3")
+print(c.reduce(0, {(i: Int, j: Int) -> Int in i+j}))
+/*************************************************/
 
 // 문제 4. 구구단 12단을 출력하세요. (12*9까지, 답만)
 
@@ -47,10 +67,19 @@ func gugu () {
     }
 }
 
+/*************************************************/
+var d = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print("\n문제4")
+d.map{ print($0 * 12) }
+/*************************************************/
+
 // 100 이하의 소수를 모두 출력하세요.
 
+var e:[Int] = []
+for i in 1...100{e.append(i)}
+
+var primeNumbers : [Int] = []
 func primeNum () {
-    var primeNumbers : [Int] = []
     
     for i in 1...100 {
         if (i == 1) {
@@ -73,7 +102,12 @@ func primeNum () {
             }
         }
     }
-    
-    print(primeNumbers)
 }
-
+/*************************************************/
+print("\n문제5")
+primeNum()
+print(e.filter({ (v: Int) -> (Bool) in
+    if primeNumbers.contains(v){ return true }
+    return false
+}))
+/*************************************************/
